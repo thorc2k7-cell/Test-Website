@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucent Studio — Photo & Video</title>
+<title>Your Vision Media — Photo & Video, Houston</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FAFAF7;
-    --ink:#1B1B18;
-    --stone:#8C877D;
-    --hairline:#DEDAD1;
-    --accent:#4A6670;
-    --accent-soft:#DCE4E2;
+    --bg-top:#000000;
+    --bg-bottom:#211F1C;
+    --ink:#F4F1EA;
+    --stone:#A39E93;
+    --hairline:rgba(255,255,255,0.12);
+    --accent:#8FB6C0;
+    --accent-soft:rgba(143,182,192,0.18);
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -21,107 +22,222 @@
   html{scroll-behavior:smooth;}
 
   body{
-    background:var(--paper);
+    background:linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
     color:var(--ink);
     font-family:'Archivo', sans-serif;
     -webkit-font-smoothing:antialiased;
+    min-height:100vh;
   }
 
   a{color:inherit; text-decoration:none;}
 
-  /* ---------- HEADER ---------- */
-  header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:32px 6vw;
-    border-bottom:1px solid var(--hairline);
-    position:sticky;
-    top:0;
-    background:rgba(250,250,247,0.92);
-    backdrop-filter:blur(6px);
-    z-index:50;
-  }
-
-  .logo{
-    font-family:'Fraunces', serif;
-    font-weight:450;
-    font-size:22px;
-    letter-spacing:0.01em;
-  }
-
-  nav{display:flex; gap:36px; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;}
-  nav a{position:relative; padding-bottom:4px;}
-  nav a::after{
-    content:'';
-    position:absolute; left:0; bottom:0;
-    width:0; height:1px; background:var(--ink);
-    transition:width .3s ease;
-  }
-  nav a:hover::after{width:100%;}
-
   /* ---------- HERO ---------- */
   .hero{
-    padding:14vh 6vw 10vh;
-    max-width:1100px;
-  }
-
-  .hero .eyebrow{
-    font-size:13px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:22px;
+    position:relative;
+    min-height:100vh;
     display:flex;
+    flex-direction:column;
     align-items:center;
-    gap:10px;
+    justify-content:center;
+    text-align:center;
+    padding:6vh 6vw;
   }
 
-  .hero .eyebrow::before{
-    content:'';
-    width:26px; height:1px; background:var(--accent);
-  }
-
-  .hero h1{
-    font-family:'Fraunces', serif;
-    font-weight:300;
-    font-size:clamp(40px, 6.4vw, 84px);
-    line-height:1.04;
-    letter-spacing:-0.01em;
-    max-width:15ch;
-  }
-
-  .hero h1 em{
-    font-style:italic;
-    font-weight:450;
-    color:var(--accent);
+  .hero .logo{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:clamp(48px, 9vw, 108px);
+    line-height:1.05;
   }
 
   .hero p{
-    margin-top:28px;
-    max-width:46ch;
+    margin-top:18px;
     font-size:17px;
-    line-height:1.65;
+    letter-spacing:0.04em;
     color:var(--stone);
+    text-transform:uppercase;
   }
 
-  /* ---------- GALLERY ---------- */
+  .scroll-cue{
+    position:absolute;
+    bottom:5vh;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    font-size:11px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--stone);
+    cursor:pointer;
+    border:none;
+    background:none;
+  }
+
+  .scroll-cue .line{
+    width:1px;
+    height:34px;
+    background:linear-gradient(180deg, transparent, var(--stone));
+    position:relative;
+    overflow:hidden;
+  }
+
+  .scroll-cue .line::after{
+    content:'';
+    position:absolute;
+    top:-34px; left:0;
+    width:100%; height:34px;
+    background:var(--accent);
+    animation:scrollDrip 1.8s ease-in-out infinite;
+  }
+
+  @keyframes scrollDrip{
+    0%{top:-34px;}
+    60%{top:34px;}
+    100%{top:34px;}
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 30px;
+    border:1px solid var(--accent);
+    border-radius:30px;
+    color:var(--ink);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:transparent;
+    cursor:pointer;
+    transition:background .25s ease, color .25s ease;
+  }
+
+  .btn:hover{
+    background:var(--accent);
+    color:#0C0C0A;
+  }
+
+  .hero .btn{
+    margin-top:32px;
+  }
+
+  .btn-lg{
+    padding:17px 42px;
+    font-size:14px;
+  }
+
+  .eyebrow{
+    display:block;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:16px;
+  }
+
+  /* ---------- CATEGORY PICKER ---------- */
+  .categories{
+    display:flex;
+    min-height:70vh;
+    border-top:1px solid var(--hairline);
+  }
+
+  .categories[hidden]{display:none;}
+
+  .category-card{
+    position:relative;
+    flex:1;
+    min-height:70vh;
+    overflow:hidden;
+    cursor:pointer;
+    border:none;
+    outline:none;
+  }
+
+  .category-card + .category-card{
+    border-left:1px solid var(--hairline);
+  }
+
+  .category-card img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    filter:saturate(0.85) brightness(0.6);
+    transition:transform 1s cubic-bezier(.2,.8,.2,1), filter .5s ease;
+  }
+
+  .category-card:hover img, .category-card:focus-visible img{
+    transform:scale(1.06);
+    filter:saturate(1) brightness(0.5);
+  }
+
+  .category-card::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+  }
+
+  .category-card span{
+    position:relative;
+    z-index:1;
+    position:absolute;
+    bottom:48px; left:50%;
+    transform:translateX(-50%);
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+
+  /* ---------- GALLERY SECTIONS ---------- */
+  .gallery-section{
+    padding:12vh 6vw;
+  }
+
+  .gallery-section[hidden]{display:none;}
+
+  .back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--stone);
+    background:none;
+    border:1px solid var(--hairline);
+    padding:9px 16px;
+    border-radius:30px;
+    cursor:pointer;
+    margin-bottom:48px;
+    transition:color .25s ease, border-color .25s ease;
+  }
+
+  .back-btn:hover{
+    color:var(--ink);
+    border-color:var(--accent);
+  }
+
   .gallery-intro{
-    padding:0 6vw 40px;
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
     border-bottom:1px solid var(--hairline);
     padding-bottom:24px;
-    margin:0 6vw 60px;
-    padding-left:0; padding-right:0;
-    margin-top:0;
+    margin-bottom:48px;
   }
 
   .gallery-intro h2{
-    font-family:'Fraunces', serif;
-    font-weight:450;
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
     font-size:28px;
+    letter-spacing:-0.01em;
   }
 
   .gallery-intro span{
@@ -132,7 +248,6 @@
   }
 
   .gallery{
-    padding:0 6vw 12vh;
     display:grid;
     grid-template-columns:repeat(6, 1fr);
     gap:18px;
@@ -149,22 +264,18 @@
 
   .tile:nth-child(1){grid-column:span 4; aspect-ratio:16/10;}
   .tile:nth-child(2){grid-column:span 2; aspect-ratio:3/4;}
-  .tile:nth-child(3){grid-column:span 2; aspect-ratio:3/4;}
-  .tile:nth-child(4){grid-column:span 2; aspect-ratio:3/4;}
-  .tile:nth-child(5){grid-column:span 3; aspect-ratio:4/3;}
-  .tile:nth-child(6){grid-column:span 3; aspect-ratio:4/3;}
-  .tile:nth-child(7){grid-column:span 2; aspect-ratio:3/4;}
-  .tile:nth-child(8){grid-column:span 4; aspect-ratio:16/9;}
+  .tile:nth-child(3){grid-column:span 3; aspect-ratio:4/3;}
+  .tile:nth-child(4){grid-column:span 3; aspect-ratio:4/3;}
 
-  .tile img, .tile video{
+  .tile img{
     width:100%; height:100%;
     object-fit:cover;
     display:block;
     transition:transform .8s cubic-bezier(.2,.8,.2,1), filter .5s ease;
   }
 
-  .tile:hover img, .tile:hover video,
-  .tile:focus-visible img, .tile:focus-visible video{
+  .tile:hover img,
+  .tile:focus-visible img{
     transform:scale(1.045);
     filter:saturate(0.92);
   }
@@ -192,7 +303,7 @@
     flex-direction:column;
     justify-content:flex-end;
     padding:22px;
-    background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(10,10,8,0.82) 100%);
+    background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(10,10,8,0.86) 100%);
     opacity:0;
     transform:translateY(8px);
     transition:opacity .4s ease, transform .4s ease;
@@ -208,26 +319,337 @@
     font-size:11px;
     letter-spacing:0.08em;
     text-transform:uppercase;
-    color:var(--paper);
-    border:1px solid rgba(250,250,247,0.4);
+    color:var(--ink);
+    border:1px solid rgba(244,241,234,0.4);
     padding:3px 9px;
     border-radius:20px;
     margin-bottom:10px;
   }
 
   .overlay h3{
-    font-family:'Fraunces', serif;
-    font-weight:450;
+    font-family:'Archivo', sans-serif;
+    font-weight:600;
     font-size:19px;
-    color:var(--paper);
+    color:var(--ink);
     margin-bottom:6px;
   }
 
   .overlay p{
     font-size:13.5px;
     line-height:1.5;
-    color:rgba(250,250,247,0.82);
+    color:rgba(244,241,234,0.82);
     max-width:38ch;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-section{
+    padding:14vh 6vw;
+    border-top:1px solid var(--hairline);
+  }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:64px;
+    align-items:center;
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  .about-media img{
+    width:100%;
+    aspect-ratio:3/2;
+    object-fit:cover;
+    border-radius:2px;
+    filter:saturate(0.9);
+  }
+
+  .about-copy h2{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:clamp(28px, 3.2vw, 42px);
+    letter-spacing:-0.01em;
+    margin-bottom:22px;
+  }
+
+  .about-copy p{
+    font-size:15.5px;
+    line-height:1.7;
+    color:var(--stone);
+    max-width:52ch;
+  }
+
+  .about-copy p + p{
+    margin-top:16px;
+  }
+
+  .about-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px 24px;
+    margin-top:28px;
+  }
+
+  .about-list li{
+    font-size:14px;
+    letter-spacing:0.02em;
+  }
+
+  .about-list li::before{
+    content:'— ';
+    color:var(--accent);
+  }
+
+  /* ---------- BOOK NOW ---------- */
+  .book-section{
+    padding:16vh 6vw;
+    border-top:1px solid var(--hairline);
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .book-section h2{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:clamp(30px, 4vw, 48px);
+    letter-spacing:-0.01em;
+    max-width:18ch;
+  }
+
+  .book-section p{
+    margin-top:18px;
+    max-width:46ch;
+    font-size:15.5px;
+    line-height:1.7;
+    color:var(--stone);
+  }
+
+  .book-section .btn{
+    margin-top:36px;
+  }
+
+  /* ---------- BOOKING MODAL ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(8,8,7,0.78);
+    backdrop-filter:blur(4px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    z-index:200;
+  }
+
+  .modal-overlay[hidden]{display:none;}
+
+  .modal{
+    position:relative;
+    width:100%;
+    max-width:480px;
+    max-height:88vh;
+    overflow-y:auto;
+    background:#1A1815;
+    border:1px solid var(--hairline);
+    border-radius:10px;
+    padding:40px 36px;
+  }
+
+  .modal-close{
+    position:absolute;
+    top:18px; right:18px;
+    width:32px; height:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:none;
+    border:none;
+    color:var(--stone);
+    font-size:22px;
+    line-height:1;
+    cursor:pointer;
+    border-radius:50%;
+    transition:color .2s ease, background .2s ease;
+  }
+
+  .modal-close:hover{
+    color:var(--ink);
+    background:rgba(255,255,255,0.06);
+  }
+
+  .modal-progress{
+    margin-bottom:28px;
+  }
+
+  .modal-step-label{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--stone);
+    margin-bottom:10px;
+  }
+
+  .modal-progress-track{
+    height:3px;
+    background:var(--hairline);
+    border-radius:3px;
+    overflow:hidden;
+  }
+
+  .modal-progress-fill{
+    height:100%;
+    background:var(--accent);
+    width:25%;
+    transition:width .35s ease;
+  }
+
+  .modal-step h3{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:-0.01em;
+    margin-bottom:8px;
+  }
+
+  .modal-subtitle{
+    font-size:13.5px;
+    color:var(--stone);
+    line-height:1.5;
+    margin-bottom:22px;
+  }
+
+  .modal-step h3 + .modal-field,
+  .modal-step h3 + .option-group{
+    margin-top:22px;
+  }
+
+  .modal-field{
+    display:block;
+    margin-bottom:16px;
+  }
+
+  .modal-field span{
+    display:block;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--stone);
+    margin-bottom:8px;
+  }
+
+  .modal-field input{
+    width:100%;
+    padding:12px 14px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--hairline);
+    border-radius:6px;
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    font-size:15px;
+    outline:none;
+    transition:border-color .2s ease;
+  }
+
+  .modal-field input:focus{
+    border-color:var(--accent);
+  }
+
+  .option-group{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .option{
+    text-align:left;
+    padding:14px 18px;
+    background:transparent;
+    border:1px solid var(--hairline);
+    border-radius:8px;
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    font-size:15px;
+    cursor:pointer;
+    transition:border-color .2s ease, background .2s ease;
+  }
+
+  .option:hover{
+    border-color:var(--accent);
+  }
+
+  .option.selected{
+    border-color:var(--accent);
+    background:var(--accent-soft);
+  }
+
+  .modal-error{
+    font-size:13px;
+    color:#E0997E;
+    margin-top:16px;
+  }
+
+  .modal-error[hidden]{display:none;}
+
+  .modal-actions{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:30px;
+    gap:12px;
+  }
+
+  .modal-actions .btn, .modal-actions .btn-ghost{
+    flex:1;
+  }
+
+  .modal-actions[hidden]{display:none;}
+
+  .btn-ghost{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:13px 20px;
+    border:1px solid var(--hairline);
+    border-radius:30px;
+    color:var(--stone);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    background:transparent;
+    cursor:pointer;
+    transition:color .2s ease, border-color .2s ease;
+  }
+
+  .btn-ghost:hover{
+    color:var(--ink);
+    border-color:var(--accent);
+  }
+
+  .btn:disabled{
+    opacity:0.5;
+    cursor:not-allowed;
+  }
+
+  .btn[hidden], .btn-ghost[hidden]{display:none;}
+
+  .modal-step[data-step="confirmation"] h3{
+    font-size:24px;
+  }
+
+  .modal-step[data-step="confirmation"] p{
+    font-size:15px;
+    color:var(--stone);
+    line-height:1.6;
+    margin-top:10px;
+  }
+
+  @media (max-width:520px){
+    .modal{padding:32px 24px;}
   }
 
   /* ---------- FOOTER ---------- */
@@ -269,10 +691,15 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:900px){
-    nav{display:none;}
+    .categories{flex-direction:column;}
+    .category-card{min-height:40vh;}
+    .category-card + .category-card{border-left:none; border-top:1px solid var(--hairline);}
     .gallery{grid-template-columns:repeat(2,1fr);}
     .tile:nth-child(n){grid-column:span 2 !important; aspect-ratio:4/3 !important;}
     .gallery-intro{flex-direction:column; align-items:flex-start; gap:8px;}
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+    .about-media img{aspect-ratio:3/2;}
+    .about-list{grid-template-columns:1fr;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -282,119 +709,165 @@
 </head>
 <body>
 
-<header>
-  <div class="logo">Lucent Studio</div>
-  <nav>
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <div class="eyebrow">Photo &amp; Video, Houston</div>
-  <h1>We shoot the moments <em>worth explaining.</em></h1>
-  <p>A small studio producing photography and film for brands, events, and people who want their story told with care. Hover any frame below to see what it was for.</p>
+<section class="hero" id="hero">
+  <div class="logo">Your Vision Media</div>
+  <p>Your visions are our goals</p>
+  <button type="button" class="btn js-open-booking">Book Now</button>
+  <button class="scroll-cue" id="scrollCue" aria-label="Scroll to categories">
+    <span class="line"></span>
+    Scroll
+  </button>
 </section>
 
-<section class="gallery-intro" id="work">
-  <h2>Selected work</h2>
-  <span>08 projects · 2023–2026</span>
+<section class="categories" id="categories">
+  <button class="category-card" data-target="gallery-video">
+    <img src="https://picsum.photos/id/1015/1200/900" alt="">
+    <span>Videography</span>
+  </button>
+  <button class="category-card" data-target="gallery-photo">
+    <img src="https://picsum.photos/id/1011/1200/900" alt="">
+    <span>Photography</span>
+  </button>
 </section>
 
-<section class="gallery">
-
-  <div class="tile" tabindex="0">
-    <img src="https://picsum.photos/id/1015/1200/750" alt="">
-    <div class="ring"></div>
-    <div class="overlay">
-      <span class="tag">Video</span>
-      <h3>Riverside Wedding Film</h3>
-      <p>Full-day documentary coverage cut into a 4-minute highlight reel for an outdoor riverside ceremony.</p>
-    </div>
+<section class="gallery-section" id="gallery-video" hidden>
+  <button class="back-btn" data-back>&larr; Back to categories</button>
+  <div class="gallery-intro">
+    <h2>Video — Selected Works</h2>
+    <span>04 projects</span>
   </div>
+  <div class="gallery">
 
-  <div class="tile" tabindex="0">
-    <img src="https://picsum.photos/id/1011/800/1000" alt="">
-    <div class="ring"></div>
-    <div class="overlay">
-      <span class="tag">Photo</span>
-      <h3>Founder Portraits — Aro Coffee</h3>
-      <p>Editorial headshots for a coffee roastery's press kit and website.</p>
+    <div class="tile" tabindex="0">
+      <img src="https://picsum.photos/id/1015/1200/750" alt="">
+      <div class="ring"></div>
+      <div class="overlay">
+        <span class="tag">Video</span>
+        <h3>Riverside Wedding Film</h3>
+        <p>Full-day documentary coverage cut into a 4-minute highlight reel for an outdoor riverside ceremony.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="tile" tabindex="0">
-    <img src="https://picsum.photos/id/1025/800/1000" alt="">
-    <div class="ring"></div>
-    <div class="overlay">
-      <span class="tag">Photo</span>
-      <h3>Product Line — Field Supply Co.</h3>
-      <p>Catalog photography for a new outdoor-gear seasonal drop.</p>
+    <div class="tile" tabindex="0">
+      <img src="https://picsum.photos/id/1035/800/1000" alt="">
+      <div class="ring"></div>
+      <div class="overlay">
+        <span class="tag">Video</span>
+        <h3>Brand Film — Northline Roasters</h3>
+        <p>90-second brand story shot over two days at the roastery and cafe.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="tile" tabindex="0">
-    <img src="https://picsum.photos/id/1035/800/1000" alt="">
-    <div class="ring"></div>
-    <div class="overlay">
-      <span class="tag">Video</span>
-      <h3>Brand Film — Northline Roasters</h3>
-      <p>90-second brand story shot over two days at the roastery and cafe.</p>
+    <div class="tile" tabindex="0">
+      <img src="https://picsum.photos/id/1043/900/700" alt="">
+      <div class="ring"></div>
+      <div class="overlay">
+        <span class="tag">Video</span>
+        <h3>Recipe Series — Table & Thyme</h3>
+        <p>A six-part short-form video series for social, shot in one afternoon.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="tile" tabindex="0">
-    <img src="https://picsum.photos/id/1041/900/700" alt="">
-    <div class="ring"></div>
-    <div class="overlay">
-      <span class="tag">Photo</span>
-      <h3>Corporate Event Coverage</h3>
-      <p>Candid and staged photography for a two-day industry conference.</p>
+    <div class="tile" tabindex="0">
+      <img src="https://picsum.photos/id/1060/1200/700" alt="">
+      <div class="ring"></div>
+      <div class="overlay">
+        <span class="tag">Video</span>
+        <h3>Documentary Short — Making Room</h3>
+        <p>A 12-minute independent documentary following a local nonprofit.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="tile" tabindex="0">
-    <img src="https://picsum.photos/id/1043/900/700" alt="">
-    <div class="ring"></div>
-    <div class="overlay">
-      <span class="tag">Video</span>
-      <h3>Recipe Series — Table & Thyme</h3>
-      <p>A six-part short-form video series for social, shot in one afternoon.</p>
-    </div>
   </div>
-
-  <div class="tile" tabindex="0">
-    <img src="https://picsum.photos/id/1050/800/1000" alt="">
-    <div class="ring"></div>
-    <div class="overlay">
-      <span class="tag">Photo</span>
-      <h3>Real Estate Listing Set</h3>
-      <p>Interior and drone photography for a residential listing package.</p>
-    </div>
-  </div>
-
-  <div class="tile" tabindex="0">
-    <img src="https://picsum.photos/id/1060/1200/700" alt="">
-    <div class="ring"></div>
-    <div class="overlay">
-      <span class="tag">Video</span>
-      <h3>Documentary Short — Making Room</h3>
-      <p>A 12-minute independent documentary following a local nonprofit.</p>
-    </div>
-  </div>
-
 </section>
 
-<footer id="about">
+<section class="gallery-section" id="gallery-photo" hidden>
+  <button class="back-btn" data-back>&larr; Back to categories</button>
+  <div class="gallery-intro">
+    <h2>Photo — Selected Works</h2>
+    <span>04 projects</span>
+  </div>
+  <div class="gallery">
+
+    <div class="tile" tabindex="0">
+      <img src="https://picsum.photos/id/1011/800/1000" alt="">
+      <div class="ring"></div>
+      <div class="overlay">
+        <span class="tag">Photo</span>
+        <h3>Founder Portraits — Aro Coffee</h3>
+        <p>Editorial headshots for a coffee roastery's press kit and website.</p>
+      </div>
+    </div>
+
+    <div class="tile" tabindex="0">
+      <img src="https://picsum.photos/id/1025/800/1000" alt="">
+      <div class="ring"></div>
+      <div class="overlay">
+        <span class="tag">Photo</span>
+        <h3>Product Line — Field Supply Co.</h3>
+        <p>Catalog photography for a new outdoor-gear seasonal drop.</p>
+      </div>
+    </div>
+
+    <div class="tile" tabindex="0">
+      <img src="https://picsum.photos/id/1041/900/700" alt="">
+      <div class="ring"></div>
+      <div class="overlay">
+        <span class="tag">Photo</span>
+        <h3>Corporate Event Coverage</h3>
+        <p>Candid and staged photography for a two-day industry conference.</p>
+      </div>
+    </div>
+
+    <div class="tile" tabindex="0">
+      <img src="https://picsum.photos/id/1050/800/1000" alt="">
+      <div class="ring"></div>
+      <div class="overlay">
+        <span class="tag">Photo</span>
+        <h3>Real Estate Listing Set</h3>
+        <p>Interior and drone photography for a residential listing package.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="about-grid">
+    <div class="about-media">
+      <img src="Camera_man_Operating.jpg" alt="Videographer adjusting a camera on a tripod during a shoot">
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">Directed by</span>
+      <h2>Caleb Thornton</h2>
+      <p>Your Vision Media is a small photo and video studio built around one idea: the best work happens when we actually listen first. We spend time understanding what a couple, a brand, or a founder is trying to say before we ever pick up a camera.</p>
+      <p>From weddings to brand films to product photography, every project gets the same care — thoughtful direction on set, and an edit that respects the story instead of chasing trends.</p>
+      <ul class="about-list">
+        <li>Photography</li>
+        <li>Videography</li>
+        <li>Brand Storytelling</li>
+        <li>Event Coverage</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="book-section" id="book">
+  <span class="eyebrow">Book Now</span>
+  <h2>Ready to start your project?</h2>
+  <p>Tell us about your date, your brand, or your vision — we'll get back to you within two business days.</p>
+  <button type="button" class="btn btn-lg js-open-booking">Book a Session</button>
+</section>
+
+<footer>
   <div class="col">
     <h4>Studio</h4>
-    <p>Lucent Studio<br>Houston, TX</p>
+    <p>Your Vision Media<br>Houston, TX</p>
   </div>
   <div class="col" id="contact">
     <h4>Contact</h4>
-    <a href="mailto:hello@lucentstudio.co">hello@lucentstudio.co</a>
-    <a href="tel:+17135551234">(713) 555-1234</a>
+    <a href="mailto:yourvisionm@gmail.com">yourvisionm@gmail.com</a>
+    <a href="tel:+18324706804">(832) 470-6804</a>
   </div>
   <div class="col">
     <h4>Elsewhere</h4>
@@ -402,10 +875,311 @@
     <a href="#">Vimeo</a>
   </div>
   <div class="fine">
-    <span>© 2026 Lucent Studio</span>
+    <span>© 2026 Your Vision Media</span>
     <span>Built with care.</span>
   </div>
 </footer>
+
+<div class="modal-overlay" id="bookingOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <button type="button" class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+
+    <div class="modal-progress" id="modalProgress">
+      <span class="modal-step-label" id="modalStepLabel">Step 1 of 4</span>
+      <div class="modal-progress-track"><div class="modal-progress-fill" id="modalProgressFill"></div></div>
+    </div>
+
+    <form id="bookingForm" novalidate>
+      <input type="text" name="_gotcha" style="display:none">
+
+      <div class="modal-step" data-step="1">
+        <h3 id="modalHeading">Let's start with your info</h3>
+        <label class="modal-field">
+          <span>Name</span>
+          <input type="text" name="name" autocomplete="name" required>
+        </label>
+        <label class="modal-field">
+          <span>Email</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <label class="modal-field">
+          <span>Phone</span>
+          <input type="tel" name="phone" autocomplete="tel" required>
+        </label>
+      </div>
+
+      <div class="modal-step" data-step="2" hidden>
+        <h3>What are you interested in?</h3>
+        <div class="option-group" data-field="service">
+          <button type="button" class="option" data-value="Photo">Photo</button>
+          <button type="button" class="option" data-value="Video">Video</button>
+          <button type="button" class="option" data-value="Both">Both</button>
+        </div>
+      </div>
+
+      <div class="modal-step" data-step="3" hidden>
+        <h3>What's your budget range?</h3>
+        <div class="option-group" data-field="budget">
+          <button type="button" class="option" data-value="Under $300">Under $300</button>
+          <button type="button" class="option" data-value="$300–$800">$300–$800</button>
+          <button type="button" class="option" data-value="$800–$1k+">$800–$1k+</button>
+        </div>
+      </div>
+
+      <div class="modal-step" data-step="4" hidden>
+        <h3>What kind of content are you looking for?</h3>
+        <p class="modal-subtitle">Select all that apply — we'll refine it on the call.</p>
+        <div class="option-group" data-field="contentType" data-multi="true">
+          <button type="button" class="option" data-value="Social Media Shorts">Social Media Shorts</button>
+          <button type="button" class="option" data-value="Website & Long-Form Content">Website &amp; Long-Form Content</button>
+          <button type="button" class="option" data-value="Full Ad Campaign">Full Ad Campaign</button>
+          <button type="button" class="option" data-value="Other">Other</button>
+        </div>
+      </div>
+
+      <div class="modal-step" data-step="confirmation" hidden>
+        <h3>Thanks — we'll be in touch soon.</h3>
+        <p>We've received your info and will follow up shortly to lock in the details.</p>
+      </div>
+
+      <p class="modal-error" id="modalError" hidden></p>
+
+      <div class="modal-actions" id="modalActions">
+        <button type="button" class="btn-ghost" id="modalBack" hidden>Back</button>
+        <button type="button" class="btn" id="modalNext">Next</button>
+        <button type="submit" class="btn" id="modalSubmit" hidden>Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  const categories = document.getElementById('categories');
+  const hero = document.getElementById('hero');
+
+  document.querySelectorAll('.category-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const target = document.getElementById(card.dataset.target);
+      categories.hidden = true;
+      hero.style.display = 'none';
+      document.querySelectorAll('.gallery-section').forEach(s => s.hidden = true);
+      target.hidden = false;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.querySelectorAll('[data-back]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.gallery-section').forEach(s => s.hidden = true);
+      hero.style.display = '';
+      categories.hidden = false;
+      categories.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.getElementById('scrollCue').addEventListener('click', () => {
+    categories.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ---------- BOOKING MODAL ----------
+  // Replace with your own Formspree endpoint — see setup notes.
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xgogjnar';
+
+  // Sends the "thanks, we'll be in touch" email to the lead. See EmailJS setup notes.
+  const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY';
+  const EMAILJS_SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID';
+  const EMAILJS_TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID';
+  if (window.emailjs) emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+  const overlay = document.getElementById('bookingOverlay');
+  const bookingForm = document.getElementById('bookingForm');
+  const modalSteps = [...bookingForm.querySelectorAll('.modal-step')];
+  const modalProgress = document.getElementById('modalProgress');
+  const stepLabel = document.getElementById('modalStepLabel');
+  const progressFill = document.getElementById('modalProgressFill');
+  const modalBack = document.getElementById('modalBack');
+  const modalNext = document.getElementById('modalNext');
+  const modalSubmit = document.getElementById('modalSubmit');
+  const modalClose = document.getElementById('modalClose');
+  const modalError = document.getElementById('modalError');
+
+  let currentStep = 1;
+  const answers = { service: '', budget: '', contentType: [] };
+
+  function openBookingModal() {
+    currentStep = 1;
+    overlay.hidden = false;
+    document.body.style.overflow = 'hidden';
+    renderModalStep();
+  }
+
+  function closeBookingModal() {
+    overlay.hidden = true;
+    document.body.style.overflow = '';
+    resetBookingForm();
+  }
+
+  function resetBookingForm() {
+    bookingForm.reset();
+    answers.service = '';
+    answers.budget = '';
+    answers.contentType = [];
+    bookingForm.querySelectorAll('.option.selected').forEach(o => o.classList.remove('selected'));
+    modalSubmit.disabled = false;
+    modalSubmit.textContent = 'Submit';
+    currentStep = 1;
+  }
+
+  function renderModalStep() {
+    modalSteps.forEach(s => { s.hidden = s.dataset.step !== String(currentStep); });
+    modalError.hidden = true;
+
+    if (currentStep === 'confirmation') {
+      modalProgress.hidden = true;
+      document.getElementById('modalActions').hidden = true;
+    } else {
+      modalProgress.hidden = false;
+      document.getElementById('modalActions').hidden = false;
+      stepLabel.textContent = `Step ${currentStep} of 4`;
+      progressFill.style.width = `${(currentStep / 4) * 100}%`;
+      modalBack.hidden = currentStep === 1;
+      modalNext.hidden = currentStep === 4;
+      modalSubmit.hidden = currentStep !== 4;
+    }
+  }
+
+  bookingForm.querySelectorAll('.option-group').forEach(group => {
+    group.addEventListener('click', (e) => {
+      const optionBtn = e.target.closest('.option');
+      if (!optionBtn) return;
+      const field = group.dataset.field;
+
+      if (group.dataset.multi === 'true') {
+        optionBtn.classList.toggle('selected');
+        answers[field] = [...group.querySelectorAll('.option.selected')].map(o => o.dataset.value);
+      } else {
+        group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        optionBtn.classList.add('selected');
+        answers[field] = optionBtn.dataset.value;
+      }
+      modalError.hidden = true;
+    });
+  });
+
+  function validateStep(step) {
+    if (step === 1) {
+      const name = bookingForm.name.value.trim();
+      const email = bookingForm.email.value.trim();
+      const phone = bookingForm.phone.value.trim();
+      if (!name || !email || !phone) return 'Please fill in your name, email, and phone.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Please enter a valid email address.';
+      return null;
+    }
+    if (step === 2 && !answers.service) return 'Please choose an option to continue.';
+    if (step === 3 && !answers.budget) return 'Please choose an option to continue.';
+    if (step === 4 && answers.contentType.length === 0) return 'Please choose at least one option to continue.';
+    return null;
+  }
+
+  modalNext.addEventListener('click', () => {
+    const err = validateStep(currentStep);
+    if (err) {
+      modalError.textContent = err;
+      modalError.hidden = false;
+      return;
+    }
+    currentStep++;
+    renderModalStep();
+  });
+
+  modalBack.addEventListener('click', () => {
+    currentStep--;
+    renderModalStep();
+  });
+
+  modalClose.addEventListener('click', closeBookingModal);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeBookingModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !overlay.hidden) closeBookingModal();
+  });
+
+  document.querySelectorAll('.js-open-booking').forEach(btn => {
+    btn.addEventListener('click', openBookingModal);
+  });
+
+  function buildCalendarLink({ name, email, phone, service, budget, contentType }) {
+    const text = encodeURIComponent(`Booking Inquiry — ${name} (${service})`);
+    const details = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nBudget: ${budget}\nContent type: ${contentType}`
+    );
+    const location = encodeURIComponent('Houston, TX');
+    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&details=${details}&location=${location}`;
+  }
+
+  bookingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const err = validateStep(4);
+    if (err) {
+      modalError.textContent = err;
+      modalError.hidden = false;
+      return;
+    }
+
+    modalSubmit.disabled = true;
+    modalSubmit.textContent = 'Sending…';
+
+    const name = bookingForm.name.value.trim();
+    const email = bookingForm.email.value.trim();
+    const phone = bookingForm.phone.value.trim();
+    const contentType = answers.contentType.join(', ');
+    const calendarLink = buildCalendarLink({ name, email, phone, service: answers.service, budget: answers.budget, contentType });
+
+    const payload = new FormData();
+    payload.append('name', name);
+    payload.append('email', email);
+    payload.append('phone', phone);
+    payload.append('service', answers.service);
+    payload.append('budget', answers.budget);
+    payload.append('content_type', contentType);
+    payload.append('google_calendar_link', calendarLink);
+    payload.append('_subject', `New booking inquiry — ${name}`);
+    payload.append('_replyto', email);
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: payload
+      });
+      if (!res.ok) throw new Error('Request failed');
+
+      // Best-effort thank-you email to the lead — doesn't block confirmation if it fails.
+      if (window.emailjs) {
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          to_name: name,
+          to_email: email,
+          service: answers.service,
+          budget: answers.budget,
+          content_type: contentType
+        }).catch(emailErr => console.error('Thank-you email failed to send:', emailErr));
+      }
+
+      currentStep = 'confirmation';
+      renderModalStep();
+    } catch (err) {
+      modalError.textContent = "Something went wrong sending your info — please email yourvisionm@gmail.com directly.";
+      modalError.hidden = false;
+    } finally {
+      modalSubmit.disabled = false;
+      modalSubmit.textContent = 'Submit';
+    }
+  });
+</script>
 
 </body>
 </html>
