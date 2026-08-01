@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucent Studio — Photo & Video</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,450;9..144,600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF7;
+    --ink:#1B1B18;
+    --stone:#8C877D;
+    --hairline:#DEDAD1;
+    --accent:#4A6670;
+    --accent-soft:#DCE4E2;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Archivo', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:32px 6vw;
+    border-bottom:1px solid var(--hairline);
+    position:sticky;
+    top:0;
+    background:rgba(250,250,247,0.92);
+    backdrop-filter:blur(6px);
+    z-index:50;
+  }
+
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    font-size:22px;
+    letter-spacing:0.01em;
+  }
+
+  nav{display:flex; gap:36px; font-size:14px; letter-spacing:0.04em; text-transform:uppercase;}
+  nav a{position:relative; padding-bottom:4px;}
+  nav a::after{
+    content:'';
+    position:absolute; left:0; bottom:0;
+    width:0; height:1px; background:var(--ink);
+    transition:width .3s ease;
+  }
+  nav a:hover::after{width:100%;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:14vh 6vw 10vh;
+    max-width:1100px;
+  }
+
+  .hero .eyebrow{
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .hero .eyebrow::before{
+    content:'';
+    width:26px; height:1px; background:var(--accent);
+  }
+
+  .hero h1{
+    font-family:'Fraunces', serif;
+    font-weight:300;
+    font-size:clamp(40px, 6.4vw, 84px);
+    line-height:1.04;
+    letter-spacing:-0.01em;
+    max-width:15ch;
+  }
+
+  .hero h1 em{
+    font-style:italic;
+    font-weight:450;
+    color:var(--accent);
+  }
+
+  .hero p{
+    margin-top:28px;
+    max-width:46ch;
+    font-size:17px;
+    line-height:1.65;
+    color:var(--stone);
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-intro{
+    padding:0 6vw 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    border-bottom:1px solid var(--hairline);
+    padding-bottom:24px;
+    margin:0 6vw 60px;
+    padding-left:0; padding-right:0;
+    margin-top:0;
+  }
+
+  .gallery-intro h2{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    font-size:28px;
+  }
+
+  .gallery-intro span{
+    font-size:13px;
+    color:var(--stone);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+
+  .gallery{
+    padding:0 6vw 12vh;
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:18px;
+  }
+
+  .tile{
+    position:relative;
+    overflow:hidden;
+    border-radius:2px;
+    background:#111;
+    cursor:pointer;
+    outline:none;
+  }
+
+  .tile:nth-child(1){grid-column:span 4; aspect-ratio:16/10;}
+  .tile:nth-child(2){grid-column:span 2; aspect-ratio:3/4;}
+  .tile:nth-child(3){grid-column:span 2; aspect-ratio:3/4;}
+  .tile:nth-child(4){grid-column:span 2; aspect-ratio:3/4;}
+  .tile:nth-child(5){grid-column:span 3; aspect-ratio:4/3;}
+  .tile:nth-child(6){grid-column:span 3; aspect-ratio:4/3;}
+  .tile:nth-child(7){grid-column:span 2; aspect-ratio:3/4;}
+  .tile:nth-child(8){grid-column:span 4; aspect-ratio:16/9;}
+
+  .tile img, .tile video{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .8s cubic-bezier(.2,.8,.2,1), filter .5s ease;
+  }
+
+  .tile:hover img, .tile:hover video,
+  .tile:focus-visible img, .tile:focus-visible video{
+    transform:scale(1.045);
+    filter:saturate(0.92);
+  }
+
+  /* aperture-ring signature reveal */
+  .tile .ring{
+    position:absolute;
+    top:50%; left:50%;
+    width:0; height:0;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.55);
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    transition:width .55s cubic-bezier(.2,.8,.2,1), height .55s cubic-bezier(.2,.8,.2,1), opacity .4s ease;
+    opacity:0;
+  }
+  .tile:hover .ring, .tile:focus-visible .ring{
+    width:70%; height:70%;
+    opacity:1;
+  }
+
+  .overlay{
+    position:absolute; inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:22px;
+    background:linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(10,10,8,0.82) 100%);
+    opacity:0;
+    transform:translateY(8px);
+    transition:opacity .4s ease, transform .4s ease;
+  }
+
+  .tile:hover .overlay, .tile:focus-visible .overlay{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .tag{
+    align-self:flex-start;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--paper);
+    border:1px solid rgba(250,250,247,0.4);
+    padding:3px 9px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+
+  .overlay h3{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    font-size:19px;
+    color:var(--paper);
+    margin-bottom:6px;
+  }
+
+  .overlay p{
+    font-size:13.5px;
+    line-height:1.5;
+    color:rgba(250,250,247,0.82);
+    max-width:38ch;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--hairline);
+    padding:60px 6vw 40px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+  }
+
+  footer .col h4{
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--stone);
+    margin-bottom:14px;
+  }
+
+  footer .col p, footer .col a{
+    font-size:15px;
+    line-height:1.8;
+    display:block;
+  }
+
+  footer .col a:hover{color:var(--accent);}
+
+  .fine{
+    width:100%;
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid var(--hairline);
+    font-size:12px;
+    color:var(--stone);
+    display:flex;
+    justify-content:space-between;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    nav{display:none;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .tile:nth-child(n){grid-column:span 2 !important; aspect-ratio:4/3 !important;}
+    .gallery-intro{flex-direction:column; align-items:flex-start; gap:8px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important; animation:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Lucent Studio</div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Photo &amp; Video, Houston</div>
+  <h1>We shoot the moments <em>worth explaining.</em></h1>
+  <p>A small studio producing photography and film for brands, events, and people who want their story told with care. Hover any frame below to see what it was for.</p>
+</section>
+
+<section class="gallery-intro" id="work">
+  <h2>Selected work</h2>
+  <span>08 projects · 2023–2026</span>
+</section>
+
+<section class="gallery">
+
+  <div class="tile" tabindex="0">
+    <img src="https://picsum.photos/id/1015/1200/750" alt="">
+    <div class="ring"></div>
+    <div class="overlay">
+      <span class="tag">Video</span>
+      <h3>Riverside Wedding Film</h3>
+      <p>Full-day documentary coverage cut into a 4-minute highlight reel for an outdoor riverside ceremony.</p>
+    </div>
+  </div>
+
+  <div class="tile" tabindex="0">
+    <img src="https://picsum.photos/id/1011/800/1000" alt="">
+    <div class="ring"></div>
+    <div class="overlay">
+      <span class="tag">Photo</span>
+      <h3>Founder Portraits — Aro Coffee</h3>
+      <p>Editorial headshots for a coffee roastery's press kit and website.</p>
+    </div>
+  </div>
+
+  <div class="tile" tabindex="0">
+    <img src="https://picsum.photos/id/1025/800/1000" alt="">
+    <div class="ring"></div>
+    <div class="overlay">
+      <span class="tag">Photo</span>
+      <h3>Product Line — Field Supply Co.</h3>
+      <p>Catalog photography for a new outdoor-gear seasonal drop.</p>
+    </div>
+  </div>
+
+  <div class="tile" tabindex="0">
+    <img src="https://picsum.photos/id/1035/800/1000" alt="">
+    <div class="ring"></div>
+    <div class="overlay">
+      <span class="tag">Video</span>
+      <h3>Brand Film — Northline Roasters</h3>
+      <p>90-second brand story shot over two days at the roastery and cafe.</p>
+    </div>
+  </div>
+
+  <div class="tile" tabindex="0">
+    <img src="https://picsum.photos/id/1041/900/700" alt="">
+    <div class="ring"></div>
+    <div class="overlay">
+      <span class="tag">Photo</span>
+      <h3>Corporate Event Coverage</h3>
+      <p>Candid and staged photography for a two-day industry conference.</p>
+    </div>
+  </div>
+
+  <div class="tile" tabindex="0">
+    <img src="https://picsum.photos/id/1043/900/700" alt="">
+    <div class="ring"></div>
+    <div class="overlay">
+      <span class="tag">Video</span>
+      <h3>Recipe Series — Table & Thyme</h3>
+      <p>A six-part short-form video series for social, shot in one afternoon.</p>
+    </div>
+  </div>
+
+  <div class="tile" tabindex="0">
+    <img src="https://picsum.photos/id/1050/800/1000" alt="">
+    <div class="ring"></div>
+    <div class="overlay">
+      <span class="tag">Photo</span>
+      <h3>Real Estate Listing Set</h3>
+      <p>Interior and drone photography for a residential listing package.</p>
+    </div>
+  </div>
+
+  <div class="tile" tabindex="0">
+    <img src="https://picsum.photos/id/1060/1200/700" alt="">
+    <div class="ring"></div>
+    <div class="overlay">
+      <span class="tag">Video</span>
+      <h3>Documentary Short — Making Room</h3>
+      <p>A 12-minute independent documentary following a local nonprofit.</p>
+    </div>
+  </div>
+
+</section>
+
+<footer id="about">
+  <div class="col">
+    <h4>Studio</h4>
+    <p>Lucent Studio<br>Houston, TX</p>
+  </div>
+  <div class="col" id="contact">
+    <h4>Contact</h4>
+    <a href="mailto:hello@lucentstudio.co">hello@lucentstudio.co</a>
+    <a href="tel:+17135551234">(713) 555-1234</a>
+  </div>
+  <div class="col">
+    <h4>Elsewhere</h4>
+    <a href="#">Instagram</a>
+    <a href="#">Vimeo</a>
+  </div>
+  <div class="fine">
+    <span>© 2026 Lucent Studio</span>
+    <span>Built with care.</span>
+  </div>
+</footer>
+
+</body>
+</html>
