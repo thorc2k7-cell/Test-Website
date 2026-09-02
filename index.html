@@ -455,6 +455,16 @@
     gap:24px;
   }
 
+  .album-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+    gap:24px;
+  }
+
+  .album-grid .category-card{
+    aspect-ratio:4/3;
+  }
+
   .category-card{
     position:relative;
     display:block;
@@ -1794,7 +1804,32 @@
     </div>
     <span>Featured Projects</span>
   </div>
-  <p class="category-page-blurb">Candid and staged coverage for conferences, launches, and gatherings.</p>
+  <p class="category-page-blurb">Browse coverage by event.</p>
+  <div class="gallery album-grid">
+    <button type="button" class="category-card reveal" data-open-page="page-event-harris-county-summit" aria-label="Explore Harris County Business Summit For Office of Commissioner Rodney Ellis album">
+      <div class="category-card-media">
+        <img src="Event photos/55369412115_d0f4339298_o.jpg" alt="Two smiling registration desk volunteers behind a Rodney Ellis Commissioner Equity in Enterprise banner">
+      </div>
+      <div class="category-card-scrim"></div>
+      <span class="category-card-tag">Album</span>
+      <div class="category-card-caption">
+        <h3>Harris County Business Summit For Office of Commissioner Rodney Ellis</h3>
+        <span class="category-card-cta">Explore &rarr;</span>
+      </div>
+    </button>
+  </div>
+</section>
+
+<section class="gallery-section category-page" id="page-event-harris-county-summit" hidden>
+  <button class="back-btn" data-open-page="page-events">&larr; Back to Events</button>
+  <div class="gallery-intro">
+    <div>
+      <span class="works-eyebrow">Photography</span>
+      <h2>Harris County Business Summit For Office of Commissioner Rodney Ellis</h2>
+    </div>
+    <span>Featured Projects</span>
+  </div>
+  <p class="category-page-blurb">Candid and staged coverage from the summit floor, registration desk, and breakout sessions.</p>
   <div class="gallery gallery-solo">
     <div class="tile tile-solo reveal" tabindex="0">
       <span class="tile-index">01</span>
