@@ -465,6 +465,38 @@
     aspect-ratio:4/3;
   }
 
+  .photo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
+    gap:16px;
+    margin-top:60px;
+  }
+
+  .photo-grid .tile{
+    aspect-ratio:1/1;
+    overflow:hidden;
+    border-radius:4px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.08);
+  }
+
+  .photo-grid .tile-media{
+    position:absolute;
+    inset:0;
+  }
+
+  .photo-grid .tile-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:transform .5s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .photo-grid .tile:hover .tile-media img,
+  .photo-grid .tile:focus-visible .tile-media img{
+    transform:scale(1.06);
+  }
+
   .category-card{
     position:relative;
     display:block;
@@ -1889,6 +1921,264 @@
         <p>The welcome desk team greeting guests as they arrive.</p>
       </div>
       <span class="tile-cursor-badge">View Project</span>
+    </div>
+  </div>
+
+  <div class="photo-grid">
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-10_55367304705_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-11_55367089694_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-12_55366895821_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-13_55366895831_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-15_55368069167_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-16_55369411930_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-18_55369194524_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-19_55369411915_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-1_55367304985_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-20_55369152128_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-22_55369152133_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-24_55369003631_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-25_55368069142_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-26_55369412110_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-27_55369152063_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-28_55369152068_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-29_55369412095_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-2_55367048903_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-30_55369152038_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-31_55369194459_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-32_55369152033_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-33_55369412040_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-34_55369412035_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-35_55369003586_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-36_55368069097_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-37_55369412000_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-38_55369194404_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-39_55369151923_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-3_55367089934_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-40_55369194294_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-41_55369003466_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-42_55368069062_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-43_55368068922_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-44_55369003546_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-45_55369194394_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-46_55369003536_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-48_55368068907_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-4_55367089979_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-50_55369411980_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-51_55369003516_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-52_55368068997_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-53_55369003511_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-54_55368068902_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-55_55369411885_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-56_55369003446_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-57_55368068897_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-5_55365961402_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-6_55367304825_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-7_55367048698_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-8_55367304670_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
+    </div>
+    <div class="tile reveal" tabindex="0">
+      <div class="tile-media">
+        <img src="Event photos/small-business-summit-9_55365961177_o.jpg" alt="Photo from the Harris County Business Summit for the Office of Commissioner Rodney Ellis">
+      </div>
     </div>
   </div>
 </section>
