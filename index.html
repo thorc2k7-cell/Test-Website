@@ -340,6 +340,7 @@
   }
 
   .why-card.reveal:nth-child(2),
+  .pricing-card.reveal:nth-child(2),
   footer .col.reveal:nth-child(2){transition-delay:.12s;}
 
   .tile.reveal:nth-child(2){transition-delay:.08s;}
@@ -348,6 +349,7 @@
   .tile.reveal:nth-child(5){transition-delay:.32s;}
 
   .why-card.reveal:nth-child(3),
+  .pricing-card.reveal:nth-child(3),
   footer .col.reveal:nth-child(3){transition-delay:.24s;}
 
   /* ---------- BUTTONS ---------- */
@@ -925,6 +927,116 @@
     .why-grid{grid-template-columns:1fr; gap:32px;}
   }
 
+  /* ---------- PRICING ---------- */
+  .pricing-section{
+    padding:14vh 6vw;
+    border-top:1px solid var(--hairline);
+    max-width:1200px;
+    margin:0 auto;
+  }
+
+  .pricing-section h2{
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:clamp(28px, 3.2vw, 42px);
+    letter-spacing:-0.01em;
+    text-align:center;
+    margin:0 auto 56px;
+  }
+
+  .pricing-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:32px;
+  }
+
+  .pricing-card{
+    border:1px solid var(--hairline);
+    border-radius:10px;
+    padding:36px 28px;
+    background:var(--bg-top);
+    text-align:center;
+  }
+
+  .pricing-card h3{
+    font-family:'Archivo', sans-serif;
+    font-weight:600;
+    font-size:18px;
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+
+  .pricing-amount{
+    display:block;
+    font-family:'Archivo', sans-serif;
+    font-weight:700;
+    font-size:clamp(24px, 2.6vw, 30px);
+    letter-spacing:-0.01em;
+    color:var(--accent);
+    margin-bottom:14px;
+  }
+
+  .pricing-card p{
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--stone);
+  }
+
+  .pricing-toggles{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-top:48px;
+  }
+
+  .pricing-toggle-btn[aria-expanded="true"]{
+    background:var(--accent-soft);
+    border-color:var(--accent);
+    color:var(--ink);
+  }
+
+  .pricing-toggle-panels{
+    margin-top:24px;
+  }
+
+  .pricing-detail-panel{
+    border:1px solid var(--hairline);
+    border-radius:10px;
+    background:var(--accent-soft);
+    padding:28px 32px;
+    max-width:640px;
+    margin:0 auto;
+  }
+
+  .pricing-detail-panel + .pricing-detail-panel{
+    margin-top:16px;
+  }
+
+  .pricing-detail-panel[hidden]{
+    display:none;
+  }
+
+  .pricing-detail-panel p{
+    font-size:14.5px;
+    line-height:1.7;
+    color:var(--stone);
+  }
+
+  .pricing-detail-panel p strong{
+    color:var(--ink);
+  }
+
+  .pricing-detail-panel p + p{
+    margin-top:10px;
+  }
+
+  @media (max-width:900px){
+    .pricing-grid{grid-template-columns:1fr; gap:24px;}
+    .pricing-detail-panel{padding:24px;}
+  }
+
   /* ---------- BOOK NOW ---------- */
   .book-section{
     padding:16vh 6vw;
@@ -1353,7 +1465,7 @@
       </li>
 
       <li><button type="button" class="nav-link" id="missionTrigger">My Mission</button></li>
-      <li><a href="#why-video">Why Media</a></li>
+      <li><a href="#pricing">Pricing</a></li>
       <li><button type="button" class="btn js-open-booking">Book</button></li>
     </ul>
   </nav>
@@ -4547,7 +4659,44 @@
 </section>
 
 
-<section class="why-section" id="why-video">
+<section class="pricing-section reveal" id="pricing">
+  <h2>Pricing</h2>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal">
+      <h3>Short-Form Video Package</h3>
+      <span class="pricing-amount">Starting at $250</span>
+      <p>Reels, promos, and social content designed to grow your following and awareness.</p>
+    </div>
+    <div class="pricing-card reveal">
+      <h3>Business/Corporate Video Package</h3>
+      <span class="pricing-amount">Starting at $600</span>
+      <p>Interviews, brand stories, and promotional video for your business or team.</p>
+    </div>
+    <div class="pricing-card reveal">
+      <h3>Event Package</h3>
+      <span class="pricing-amount">Starting at $950</span>
+      <p>Full video coverage for weddings, conferences, sporting events, and other one-day happenings.</p>
+    </div>
+  </div>
+
+  <div class="pricing-toggles">
+    <button type="button" class="btn-ghost pricing-toggle-btn" id="shortFormToggle" aria-expanded="false" aria-controls="shortFormPanel">Short Form Only</button>
+    <button type="button" class="btn-ghost pricing-toggle-btn" id="photographyToggle" aria-expanded="false" aria-controls="photographyPanel">Photography Only</button>
+  </div>
+
+  <div class="pricing-toggle-panels">
+    <div class="pricing-detail-panel" id="shortFormPanel" hidden>
+      <p>$250 per reel — perfect if you already have a concept and just need it shot and edited.</p>
+      <p>3 reels for $600 (save $150).</p>
+    </div>
+    <div class="pricing-detail-panel" id="photographyPanel" hidden>
+      <p><strong>Photo Sessions</strong> — $200 flat. One hour, 20-25 edited photos.</p>
+      <p><strong>Sports Photography</strong> — Custom quote based on scope (varies by game/season).</p>
+    </div>
+  </div>
+</section>
+
+<section class="why-section" id="why-video" hidden>
   <span class="eyebrow">Why Media</span>
   <h2>A photo shows what your brand looks like. A video shows who it is — use only one, and you're leaving the other half of your story untold.</h2>
   <div class="why-grid">
@@ -4855,6 +5004,21 @@
   document.getElementById('scrollCue').addEventListener('click', () => {
     scrollToWork('selected-works');
   });
+
+  // ---------- PRICING TOGGLES ----------
+  function setupPricingToggle(buttonId, panelId) {
+    const button = document.getElementById(buttonId);
+    const panel = document.getElementById(panelId);
+    if (!button || !panel) return;
+    button.addEventListener('click', () => {
+      const isOpen = !panel.hidden;
+      panel.hidden = isOpen;
+      button.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+
+  setupPricingToggle('shortFormToggle', 'shortFormPanel');
+  setupPricingToggle('photographyToggle', 'photographyPanel');
 
   // ---------- MISSION MODAL ----------
   const missionOverlay = document.getElementById('missionOverlay');
